@@ -1,6 +1,5 @@
-# Data files (too large for git)
+# Large data files
 data/processed/
-data/outputs/
 
 # Python
 __pycache__/

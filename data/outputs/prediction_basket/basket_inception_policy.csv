@@ -1,0 +1,11 @@
+basket_code,basket_name,raw_history_start,default_inception_date,manual_override_date,effective_inception_date,price_coverage_at_inception,cash_weight_at_inception,rule_name,override_reason
+ADIT-E3,Oil Supply Disruption,2022-01-01,2023-11-01,,2023-11-01,1.0,0.05000000000000014,coverage>=0.60_cash<=0.25,
+ADIT-P1,China Governance,2022-01-01,2025-06-01,,2025-06-01,1.0,0.05000000000000014,coverage>=0.60_cash<=0.25,
+ADIT-P2,EM Governance,2022-01-01,2023-10-01,,2023-10-01,1.0,0.05000000000000014,coverage>=0.60_cash<=0.25,
+ADIT-P3,EU Breakup Risk,2022-01-01,2025-02-01,,2025-02-01,1.0,0.05000000000000014,coverage>=0.60_cash<=0.25,
+ADIT-P4,US Governance,2022-01-01,2023-02-01,,2023-02-01,1.0,0.05000000000000014,coverage>=0.60_cash<=0.25,
+ADIT-S2,Europe War & NATO Conflict,2022-01-01,2023-02-01,,2023-02-01,1.0,0.05000000000000014,coverage>=0.60_cash<=0.25,
+ADIT-S3,Middle East Armed Conflict,2022-01-01,2024-01-01,2024-01-01,2024-01-01,1.0,0.05000000000000007,manual_override,Align visible basket inception with the 2024 conflict regime
+ADIT-S4,US-China Conflict Escalation,2022-01-01,2023-10-01,,2023-10-01,1.0,0.05000000000000014,coverage>=0.60_cash<=0.25,
+ADIT-X3,Major Economy Recession,2022-01-01,2023-01-01,,2023-01-01,1.0,0.050000000000000135,coverage>=0.60_cash<=0.25,
+ADIT-X4,Pandemic & Health Crisis,2022-01-01,2025-07-01,,2025-07-01,1.0,0.05000000000000014,coverage>=0.60_cash<=0.25,

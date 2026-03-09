@@ -1,0 +1,919 @@
+rebalance_date,basket_code,slot_key,slot_name,candidate_count,selected_count,selected_weight,required_if_available,slot_status,fallback_reason
+2022-01-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-01-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-02-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,2,2,0.9,True,selected,
+2022-03-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-03-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,3,3,0.3483,True,selected,
+2022-04-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,1,1,0.12600000000000003,True,selected,
+2022-04-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,8,8,0.4257000000000001,True,selected,
+2022-04-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-04-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,2,2,0.34830000000000005,True,selected,
+2022-05-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,2,2,0.12600000000000003,True,selected,
+2022-05-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,7,7,0.42569999999999997,True,selected,
+2022-05-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-05-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,2,2,0.3,True,selected,
+2022-06-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,1,1,0.23333333333333334,True,selected,
+2022-06-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,4,4,0.36666666666666664,True,selected,
+2022-06-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-06-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,1,1,0.16200000000000006,True,selected,
+2022-07-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,1,1,0.28700000000000003,True,selected,
+2022-07-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,4,4,0.45099999999999996,True,selected,
+2022-07-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-07-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,1,1,0.3,True,selected,
+2022-08-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,1,1,0.23333333333333334,True,selected,
+2022-08-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,2,2,0.36666666666666664,True,selected,
+2022-08-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-08-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,1,1,0.3,True,selected,
+2022-09-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,1,1,0.23333333333333334,True,selected,
+2022-09-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,2,2,0.36666666666666664,True,selected,
+2022-09-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-09-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,1,1,0.3,True,selected,
+2022-10-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,2,2,0.23333333333333334,True,selected,
+2022-10-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,1,1,0.36666666666666664,True,selected,
+2022-10-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-10-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,1,1,0.9,True,selected,
+2022-11-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-11-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-11-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-11-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-11-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-11-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-11-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-11-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-11-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,1,1,0.394875,True,selected,
+2022-11-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,3,3,0.3071250000000001,True,selected,
+2022-11-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,1,1,0.198,True,selected,
+2022-11-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-11-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-11-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-11-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-11-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,1,1,0.4090909090909091,True,selected,
+2022-11-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-11-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,1,1,0.49090909090909096,True,selected,
+2022-12-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-12-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-12-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-12-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-12-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-12-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-12-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-12-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-12-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,3,3,0.3948750000000001,True,selected,
+2022-12-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,3,3,0.3071250000000001,True,selected,
+2022-12-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,1,1,0.198,True,selected,
+2022-12-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-12-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-12-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-12-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-12-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,1,1,0.4090909090909091,True,selected,
+2022-12-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2022-12-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,1,1,0.49090909090909096,True,selected,
+2023-01-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-01-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,1,1,0.9,True,selected,
+2023-02-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-02-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,1,1,0.9,True,selected,
+2023-03-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-03-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,1,1,0.9,True,selected,
+2023-04-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-04-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,1,1,0.9,True,selected,
+2023-05-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-05-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-06-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-07-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-08-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-09-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-10-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,1,1,0.9,True,selected,
+2023-11-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-11-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,1,1,0.9,True,selected,
+2023-12-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2023-12-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,4,4,0.9,True,selected,
+2024-01-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-01-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,3,3,0.8999999999999999,True,selected,
+2024-02-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-02-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-03-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,1,1,0.9,True,selected,
+2024-04-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-04-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-05-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,1,1,0.9,True,selected,
+2024-06-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-06-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,2,2,0.9,True,selected,
+2024-07-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-07-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,2,2,0.9,True,selected,
+2024-08-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-08-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,3,3,0.8999999999999999,True,selected,
+2024-09-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-09-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,2,2,0.43043478260869567,True,selected,
+2024-10-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,1,1,0.46956521739130436,True,selected,
+2024-10-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-10-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-11-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2024-12-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,1,1,0.9,True,selected,
+2025-01-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,1,1,0.9,True,soft_only,
+2025-01-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,1,1,0.9,True,selected,
+2025-01-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-01-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,1,1,0.12600000000000003,True,selected,
+2025-02-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,7,7,0.7739999999999999,True,selected,
+2025-02-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-02-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-03-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-03-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-03-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-03-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-03-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-03-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-03-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,1,1,0.108,True,selected,
+2025-03-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-03-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,2,2,0.17385365853658535,True,selected,
+2025-03-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-03-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,23,13,0.6181463414634145,True,selected,
+2025-03-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-03-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,3,3,0.5351351351351352,True,selected,
+2025-03-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-03-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-03-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,1,1,0.36486486486486486,True,selected,
+2025-03-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-03-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-04-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-04-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-04-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-04-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-04-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-04-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-04-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,1,1,0.108,True,selected,
+2025-04-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-04-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,2,2,0.1738536585365854,True,selected,
+2025-04-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,2,0,0.0,True,candidate_unselected,required_slot_unfilled
+2025-04-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,22,13,0.6181463414634147,True,selected,
+2025-04-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-04-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,2,2,0.21405405405405406,True,selected,
+2025-04-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-04-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,1,1,0.216,True,tail_only,
+2025-04-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,1,1,0.14594594594594595,True,selected,
+2025-04-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,1,1,0.162,True,selected,
+2025-04-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,1,1,0.162,True,selected,
+2025-05-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-05-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-05-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-05-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-05-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-05-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-05-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,2,2,0.18979881656804737,True,selected,
+2025-05-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-05-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,2,2,0.18979881656804737,True,selected,
+2025-05-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,4,1,0.108,True,selected,
+2025-05-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,16,11,0.4124023668639054,True,selected,
+2025-05-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-05-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,2,2,0.21405405405405406,True,selected,
+2025-05-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-05-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,1,1,0.216,True,tail_only,
+2025-05-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,1,1,0.14594594594594595,True,selected,
+2025-05-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,1,1,0.162,True,selected,
+2025-05-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,1,1,0.162,True,selected,
+2025-06-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-06-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-06-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-06-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-06-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-06-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-06-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-06-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-06-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-06-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-06-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,2,2,0.9,True,selected,
+2025-06-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-06-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,1,1,0.19349999948198035,True,selected,
+2025-06-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-06-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,2,2,0.21600000000000003,True,selected,
+2025-06-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,3,3,0.13500000080437835,True,selected,
+2025-06-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-06-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,1,1,0.16200000023166097,True,selected,
+2025-07-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,2,2,0.9,True,selected,
+2025-07-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,3,3,0.30937500000000007,True,selected,
+2025-07-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,2,2,0.3375000000000001,True,selected,
+2025-07-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-07-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,3,3,0.25312500000000004,True,selected,
+2025-08-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-08-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-08-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-08-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-08-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-08-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-08-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,1,1,0.40499999999999997,True,selected,
+2025-08-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-08-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-08-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-08-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,3,3,0.49499999999999994,True,selected,
+2025-08-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-08-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,2,2,0.43043478260869567,True,selected,
+2025-08-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-08-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,5,5,0.4695652173913043,True,selected,
+2025-08-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-08-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-08-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-09-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-09-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-09-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-09-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-09-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-09-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-09-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,1,1,0.405,True,selected,
+2025-09-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-09-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-09-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-09-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,4,4,0.49499999999999994,True,selected,
+2025-09-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-09-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,1,1,0.309375,True,selected,
+2025-09-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,1,1,0.253125,True,selected,
+2025-09-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,2,2,0.3375,True,selected,
+2025-09-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-09-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-09-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-10-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-10-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-10-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-10-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-10-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-10-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-10-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,1,1,0.16200000000000003,True,selected,
+2025-10-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-10-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-10-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-10-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,5,5,0.738,True,selected,
+2025-10-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-10-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,1,1,0.19800000000000004,True,selected,
+2025-10-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,1,1,0.16200000000000003,True,selected,
+2025-10-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,6,4,0.54,True,selected,
+2025-10-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-10-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-10-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-11-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-11-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-11-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-11-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-11-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-11-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-11-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,1,1,0.162,True,selected,
+2025-11-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-11-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-11-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-11-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,9,9,0.7380000000000001,True,selected,
+2025-11-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-11-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,2,2,0.2754782608695653,True,selected,
+2025-11-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,1,1,0.162,True,selected,
+2025-11-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,6,4,0.30052173913043484,True,selected,
+2025-11-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-11-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-11-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,1,1,0.162,True,tail_only,
+2025-12-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-12-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,1,1,0.18000000000000002,True,tail_only,
+2025-12-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-12-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-12-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-12-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-12-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,2,1,0.405,True,selected,
+2025-12-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-12-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-12-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-12-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,15,4,0.49499999999999994,True,selected,
+2025-12-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,0,0,0.0,True,no_candidates,no_matching_candidates
+2025-12-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,5,4,0.19799999999999998,True,selected,
+2025-12-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,2,2,0.14764385502538832,True,selected,
+2025-12-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,17,4,0.21600000000000003,True,selected,
+2025-12-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,5,5,0.13500000053163652,True,selected,
+2025-12-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,1,1,0.07834933703647097,True,selected,
+2025-12-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,2,2,0.12500680740650427,True,selected,
+2026-01-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-01-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-01-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-01-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,47,6,0.9,True,selected,
+2026-01-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-01-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-01-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,3,1,0.162,True,selected,
+2026-01-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-01-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-01-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-01-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,7,5,0.477529411764706,True,selected,
+2026-01-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,2,2,0.2604705882352941,True,selected,
+2026-01-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,34,3,0.2077377049180329,True,selected,
+2026-01-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,32,2,0.16199999999999998,True,selected,
+2026-01-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,19,4,0.2266229508196722,True,selected,
+2026-01-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,4,3,0.14163934426229513,True,selected,
+2026-01-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-01-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,2,1,0.162,True,selected,
+2026-02-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-02-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-02-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-02-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,29,7,0.31500000000000006,True,selected,
+2026-02-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,8,5,0.585,True,selected,
+2026-02-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-02-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,3,2,0.2554615384615384,True,selected,
+2026-02-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,1,0,0.0,True,candidate_unselected,required_slot_unfilled
+2026-02-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,2,1,0.162,True,tail_only,
+2026-02-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-02-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,39,6,0.3122307692307693,True,selected,
+2026-02-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,2,2,0.17030769230769233,True,selected,
+2026-02-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,32,3,0.19991827799234907,True,selected,
+2026-02-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,29,1,0.108,True,soft_only,
+2026-02-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,28,6,0.2180931567590499,True,selected,
+2026-02-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,4,3,0.13630822297440617,True,selected,
+2026-02-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,1,0,0.0,True,candidate_unselected,required_slot_unfilled
+2026-02-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,40,4,0.1635698675692874,True,selected,
+2026-03-01,ADIT-E3,oil_hormuz_redsea,Hormuz / Red Sea Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-03-01,ADIT-E3,oil_infra_hits,Export / Terminal / Refinery Hits,1,1,0.2730000000000001,True,selected,
+2026-03-01,ADIT-E3,oil_opec_supply,OPEC / Production Restriction,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-03-01,ADIT-E3,oil_price_proxy,Oil Price Proxy,34,9,0.31499999999999995,True,selected,
+2026-03-01,ADIT-E3,oil_producer_shortfall,Producer Output Shortfall,8,5,0.31200000000000017,True,selected,
+2026-03-01,ADIT-E3,oil_shipping_disruption,Shipping / Tanker Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-03-01,ADIT-S2,eu_ceasefire_failure,Ukraine Ceasefire Failure,3,3,0.2554615384615385,True,selected,
+2026-03-01,ADIT-S2,eu_greenland_arctic,Greenland / Arctic / Nordic Tension,1,0,0.0,True,candidate_unselected,required_slot_unfilled
+2026-03-01,ADIT-S2,eu_nato_direct,NATO Direct Clash / Member Strike,2,1,0.162,True,tail_only,
+2026-03-01,ADIT-S2,eu_nuclear_strategic,Nuclear / Strategic Escalation,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-03-01,ADIT-S2,eu_russia_territorial,Russia Territorial Advance,20,7,0.31223076923076915,True,selected,
+2026-03-01,ADIT-S2,eu_security_fracture,EU / NATO Security Fracture,2,2,0.17030769230769233,True,selected,
+2026-03-01,ADIT-S3,me_hamas_ceasefire_failure,Gaza / Hamas Ceasefire Failure,12,2,0.19800000000000004,True,selected,
+2026-03-01,ADIT-S3,me_hezbollah_lebanon,Hezbollah / Lebanon Front,10,1,0.16848000000000002,True,soft_only,
+2026-03-01,ADIT-S3,me_iran_israel,Iran-Israel Direct Escalation,27,5,0.22463999999999998,True,selected,
+2026-03-01,ADIT-S3,me_normalization_failure,Regional Normalization Failure,4,3,0.1404,True,selected,
+2026-03-01,ADIT-S3,me_red_sea_hormuz,Red Sea / Hormuz / Shipping Disruption,0,0,0.0,True,no_candidates,no_matching_candidates
+2026-03-01,ADIT-S3,me_us_iran,US-Iran Intervention Risk,26,4,0.16848000000000002,True,selected,
