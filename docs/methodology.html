@@ -1,0 +1,5053 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Itô Markets | Methodology</title>
+  <style>
+    :root {
+      --bg: #eef1f5;
+      --panel: rgba(255, 255, 255, 0.96);
+      --panel-strong: #ffffff;
+      --panel-soft: #f6f8fb;
+      --line: #d7dde6;
+      --line-strong: #c6d0dd;
+      --text: #142033;
+      --muted: #5d6777;
+      --muted-soft: #7f8a9c;
+      --accent: #1a4faa;
+      --accent-strong: #123d85;
+      --accent-soft: rgba(26, 79, 170, 0.08);
+      --success: #0d8c5f;
+      --danger: #b42318;
+      --shadow: 0 16px 34px rgba(15, 23, 42, 0.06);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 10px;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0) 28%),
+        linear-gradient(180deg, #f6f8fb 0%, var(--bg) 52%, #edf1f6 100%);
+      color: var(--text);
+    }
+    a {
+      color: var(--accent);
+    }
+    .topline {
+      height: 5px;
+      background: linear-gradient(90deg, #184b9a 0%, #2a6bd5 40%, #184b9a 100%);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+    }
+    .shell {
+      width: min(1380px, 94vw);
+      margin: 14px auto 34px;
+    }
+    .nav-shell {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+    }
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+      background: linear-gradient(135deg, #173f86 0%, #2b6ed8 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+    .brand-copy {
+      min-width: 0;
+    }
+    .brand-copy strong {
+      display: block;
+      font-size: 19px;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .brand-copy span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      font-weight: 700;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 9px 12px;
+      border-radius: 999px;
+      transition: background 120ms ease, color 120ms ease;
+    }
+    .nav-links a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .nav-links a.active {
+      color: #fff;
+      background: linear-gradient(180deg, #1a4faa 0%, #173f86 100%);
+      box-shadow: 0 8px 18px rgba(26, 79, 170, 0.24);
+    }
+    .hero {
+      margin-top: 16px;
+      padding: 28px 30px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 92% 15%, rgba(26, 79, 170, 0.10) 0%, rgba(26, 79, 170, 0) 25%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(248, 250, 253, 0.96) 100%);
+      box-shadow: var(--shadow);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.9fr);
+      gap: 20px;
+      align-items: start;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.65;
+    }
+    h1, h2, h3 {
+      color: var(--text);
+      letter-spacing: -0.03em;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 0.98;
+    }
+    h2 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.06;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      line-height: 1.15;
+    }
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.62;
+      font-size: 14px;
+    }
+    .hero-copy p {
+      max-width: 820px;
+      font-size: 15px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+    .hero-chip strong {
+      font-size: 12px;
+    }
+    .hero-profile {
+      display: grid;
+      gap: 10px;
+    }
+    .profile-card, .panel, .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .profile-card {
+      padding: 16px 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(247, 249, 252, 0.96) 100%);
+    }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 14px;
+      margin-top: 12px;
+    }
+    .profile-row small,
+    .metric-label,
+    .section-kicker,
+    .control-block label,
+    .controls label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted-soft);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+    }
+    .profile-row strong {
+      display: block;
+      font-size: 16px;
+      line-height: 1.18;
+      color: var(--text);
+    }
+    .section {
+      margin-top: 16px;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 12px;
+    }
+    .section-head p {
+      max-width: 820px;
+    }
+    .card {
+      padding: 18px 20px;
+    }
+    .subtle {
+      color: var(--muted-soft);
+      font-size: 13px;
+    }
+    .toolbar,
+    .controls {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(248,250,252,0.98) 100%);
+      box-shadow: var(--shadow);
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .metric-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      padding: 14px 15px;
+      min-height: 94px;
+    }
+    .metric-card strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+    .metric-card .sub,
+    .metric-card .muted-note {
+      margin-top: 6px;
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.86);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+    }
+    .badge.warn {
+      border-color: rgba(180, 35, 24, 0.22);
+      color: var(--danger);
+      background: rgba(180, 35, 24, 0.05);
+    }
+    .summary-table,
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 12px;
+    }
+    th, td {
+      border-top: 1px solid #e8edf4;
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+      word-break: break-word;
+    }
+    th {
+      background: #f7f9fc;
+      color: var(--muted-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    select, input, button {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--line-strong);
+      border-radius: 11px;
+      background: #fff;
+      color: var(--text);
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    button {
+      cursor: pointer;
+      font-weight: 700;
+      background: #f8fafc;
+    }
+    .pill-button {
+      border-radius: 999px;
+    }
+    .chart-frame,
+    .aggregate-chart,
+    #basketPathChart,
+    #basketContractTrend,
+    #contractTrend {
+      width: 100%;
+      border: 1px solid #dfe6ef;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #fcfdff 0%, #f4f7fb 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
+    }
+    .muted-list, .muted-note, .chain-note, .meta {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .file-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .file-link {
+      display: block;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+    }
+    .file-link span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .doc-layout {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+    .toc-panel {
+      position: sticky;
+      top: 96px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .toc-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .toc-panel li {
+      margin: 6px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .doc-article {
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .doc-article h2 {
+      margin-top: 30px;
+      padding-top: 16px;
+      border-top: 1px solid #edf1f6;
+    }
+    .doc-article details {
+      margin: 12px 0;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: #fafcff;
+    }
+    .doc-article summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .footer-note {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: #f7fafc;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 1220px) {
+      .shell {
+        width: min(1480px, 96vw);
+      }
+      .hero-grid,
+      .doc-layout {
+        grid-template-columns: 1fr;
+      }
+      .toc-panel {
+        position: static;
+      }
+      .metric-grid,
+      .file-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 760px) {
+      .shell {
+        width: 95vw;
+      }
+      .nav-shell {
+        position: static;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero,
+      .card,
+      .panel,
+      .doc-article {
+        padding: 16px;
+      }
+      .metric-grid,
+      .file-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 32px;
+      }
+    }
+    
+    .doc-layout {{
+      margin-top: 14px;
+    }}
+    .doc-article p,
+    .doc-article li {{
+      color: var(--muted);
+      line-height: 1.66;
+      font-size: 14px;
+    }}
+    .doc-article ul {{
+      margin-top: 6px;
+      margin-bottom: 10px;
+    }}
+    .doc-article code {{
+      background: #f3f6fb;
+      border: 1px solid #e3e8f2;
+      border-radius: 4px;
+      padding: 1px 4px;
+      font-size: 12px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }}
+    .doc-article .lead {{
+      font-size: 15px;
+      color: #4b5563;
+      margin-bottom: 8px;
+    }}
+    .img-wrap {{
+      margin: 10px 0 14px;
+    }}
+    table.tbl {{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      table-layout: fixed;
+    }}
+    table.tbl th, table.tbl td {{
+      border-top: 1px solid #e5e7eb;
+      padding: 7px 8px;
+      vertical-align: top;
+      word-break: break-word;
+      text-align: left;
+    }}
+    table.tbl th {{
+      background: #f9fafb;
+    }}
+    .small {{
+      font-size: 12px;
+      color: #6b7280;
+    }}
+    .formula {{
+      margin: 8px 0 10px;
+    }}
+    .toc-panel li {{
+      margin: 4px 0;
+    }}
+  </style>
+</head>
+<body>
+  
+  <div class="topline"></div>
+  <div class="shell">
+    <header class="nav-shell">
+      <div class="brand-lockup">
+        <div class="brand-mark">I</div>
+        <div class="brand-copy">
+          <strong>Itô Markets</strong>
+          <span>Research workflow and rulebook</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a class="" href="index.html">Dashboard</a><a class="" href="explorer.html">Explorer</a><a class="" href="baskets.html">Baskets</a><a class="active" href="methodology.html">Methodology</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Methodology</div>
+          <h1>Complete rulebook for the static basket research workflow.</h1>
+          <p>This methodology page is not a marketing summary. It is the operating document for the generated basket site: scope, data dependencies, selection logic, lifecycle handling, display rules, diagnostics, and the exact output artifacts used by the front end.</p>
+          <div class="hero-actions">
+            <span class="hero-chip"><strong>Coverage</strong> 2022-01-01 → 2026-03-01</span>
+            <span class="hero-chip"><strong>Baskets</strong> 10</span>
+            <span class="hero-chip"><strong>Contracts</strong> 536</span>
+            <span class="hero-chip"><strong>Rebalances</strong> 51</span>
+          </div>
+        </div>
+        <div class="hero-profile">
+          <div class="profile-card">
+            <div class="section-kicker">Document Scope</div>
+            <h3>Single workflow, single output system.</h3>
+            <p>The methodology is aligned to the exact static artifacts generated by the engine in this workspace. That keeps the site, CSV exports, and written rulebook synchronized.</p>
+            <div class="profile-grid">
+              <div class="profile-row"><small>Focus</small><strong>Tradable NAV and basket construction</strong></div>
+              <div class="profile-row"><small>Inputs</small><strong>Processed market and price data</strong></div>
+              <div class="profile-row"><small>Outputs</small><strong>CSV artifacts + static website</strong></div>
+              <div class="profile-row"><small>Mode</small><strong>Deterministic and reproducible</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="doc-layout">
+      <aside class="toc-panel">
+        <div class="section-kicker">Contents</div>
+        <h3>Navigation</h3>
+        <p class="subtle">Use this as a fast index into the operating rulebook.</p>
+        <div class="toc">
+        <ul>
+          <li>1. Scope and Design Intent</li>
+          <li>2. Data Universe and Temporal Realism</li>
+          <li>3. Candidate Filtering and Noise Rejection</li>
+          <li>4. Selection Logic, Diversification, and Exclusivity</li>
+          <li>5. Weighting, Cash, and Rebalance Mechanics</li>
+          <li>6. Lifecycle, Expiry, and Certainty Handling</li>
+          <li>7. Basket Inception and Display Rules</li>
+          <li>8. Tradable NAV Publishing</li>
+          <li>9. Directionality and Risk-Up Semantics</li>
+          <li>10. Basket Slot Architecture</li>
+          <li>11. Level Construction and Performance Proxies</li>
+          <li>12. Governance Checks and Failure Modes</li>
+          <li>13. Reproducible Output Artifacts</li>
+          <li>14. Appendices (Full Tables)</li>
+        </ul>
+      </div>
+      </aside>
+
+      <article class="doc-article">
+      <h2>1. Scope And Design Intent</h2>
+      <p>The engine is intentionally single-purpose: construct thematic baskets that are coherent, tradable, and auditable. The strategy is rules-based with no manual override path during monthly construction. Every selection, exclusion, and weight comes from deterministic code and source data.</p>
+      <p>The key design tradeoff is between thematic purity and execution realism. The process prioritizes pure theme exposure first, then applies implementability and risk controls (liquidity/history quality, diversification caps, turnover-aware cash sleeve, and contract lifecycle handling).</p>
+
+      <h2>2. Data Universe And Temporal Realism</h2>
+      <p>Universe data is loaded from <code>data/processed/ticker_mapping.parquet</code>. Contract chain lineage is loaded from <code>data/processed/ticker_chains.json</code>. Temporal listing controls are loaded from <code>data/processed/polymarket_market_history.parquet</code>. Pricing inputs come from <code>data/processed/prices.parquet</code> and <code>data/processed/returns.parquet</code>. The engine may use optional precomputed enrichment columns when they already exist inside the processed market universe, but it does not depend on any separate legacy clustering pipeline.</p>
+      <p>Temporal realism is enforced with two rules. First, at each rebalance date, contracts must satisfy minimum time-to-expiry. Second, if inferred first-seen information is available, contracts are excluded before their inferred market appearance date. This prevents lookahead contamination when historical snapshots are reconstructed from cumulative data dumps.</p>
+      <ul>
+        <li>Minimum days-to-expiry threshold: <code>21</code> days.</li>
+        <li>Ticker-chain de-duplication: one selected market per <code>ticker_id</code> at a rebalance.</li>
+        <li>Certainty-input status in this snapshot: <strong>available (theme-aligned effective price and certainty rule active in selection diagnostics)</strong>.</li>
+      </ul>
+
+      <h2>3. Candidate Filtering And Noise Rejection</h2>
+      <p>Filtering is applied in layers to remove non-semantic noise before scoring. Global filters remove election campaign contracts and broad sports/entertainment contracts. Basket-specific filters then remove terms that introduce off-theme chatter. Category gating keeps contracts aligned with each basket taxonomy, while still allowing limited high-keyword fallback from unknown categories when needed for coverage.</p>
+      <p>This layered gate is the primary anti-noise control: contracts must pass theme relevance, category compatibility, and hard exclusions before they can compete for selection.</p>
+      <ul>
+        <li>Global hard rejects: election/presidential/campaign and broad sports/entertainment classes.</li>
+        <li>Basket-level required patterns and exclusion patterns.</li>
+        <li>Optional certainty filter when price data exists: remove contracts with theme-aligned effective price ≤ 0.05 or ≥ 0.95.</li>
+      </ul>
+
+      <h2>4. Selection Logic, Diversification, And Exclusivity</h2>
+      <p>After filtering, each candidate receives a multi-factor selection score that blends thematic relevance with quality and stability. The selector then runs a greedy marginal-add process, where each new contract must improve basket objective net of similarity and concentration penalties.</p>
+      <div class="formula">
+        <p><code>selection_score = 0.36*keyword_z + 0.27*quality_z + 0.10*stability_z + 0.05*trend_z + 0.08*category_z</code></p>
+        <p><code>marginal = selection_score - 0.35*max_text_similarity - template_penalty - event_penalty - exclusivity_penalty - community_penalty - factor_penalty</code></p>
+      </div>
+      <p>Diversification controls enforce limits at multiple semantic levels: template, community, event-family, and explicit mutual-exclusion groups. The mutual-exclusion layer is critical for ranking-style markets (for example, “best/top/second/third AI model”): contracts sharing the same exclusivity key cannot stack in one basket-month.</p>
+      <p>The cap vector for each basket is codified in configuration and applied mechanically at every rebalance; no discretionary exception path exists.</p>
+
+      <h2>5. Weighting, Cash, And Rebalance Mechanics</h2>
+      <p>Selected contracts are ranked by score, quality, liquidity, and stability to produce raw weights, then clipped and normalized under basket concentration caps. The investable sleeve equals <code>1 - cash</code>. Cash is dynamic, not fixed, and rises under turnover and risk stress.</p>
+      <div class="formula">
+        <p><code>raw_weight = 0.25 + 0.45*rank(selection_score) + 0.22*rank(quality) + 0.18*rank(log(1+volume)) + 0.15*rank(stability)</code></p>
+      </div>
+      <p><strong>Cash is not transaction cost.</strong> Cash is reserve allocation inside basket construction. Cost is estimated separately using turnover and expiry/certainty pressure proxies. Rebalance occurs monthly using only information available at rebalance time.</p>
+
+      <h2>6. Lifecycle, Expiry, And Certainty Handling</h2>
+      <p>Contracts naturally roll out for expiry/resolution and are replaced by current best candidates at subsequent rebalance. If price data is available, certainty-threshold exits (≥95% or ≤5%) are enforced on the held side of the contract: YES uses the raw YES price, while NO uses <code>1 - YES price</code>. Proceeds remain in cash until reallocation through the normal rebalance logic.</p>
+      <p>Lifecycle diagnostics are exported as an event stream so every entry/exit has a machine-readable reason: new selection, expiry/resolution, certainty threshold, or rebalance replacement.</p>
+      <div class="formula">
+        <p><code>estimated_cost_bps = 18 + 35*turnover + 10*expiring_30d_share + 6*expiring_60d_share + 25*certainty_share</code></p>
+        <p class="small">Certainty component is active only when price inputs are present.</p>
+      </div>
+
+      <h2>7. Basket Inception And Display Rules</h2>
+      <p>The stored basket history can begin before a basket is meaningfully investable. In those periods the basket is effectively just cash or low-coverage placeholder exposure, which produces long flat chart segments that are technically present in the raw data but economically misleading as a default view.</p>
+      <p>The dashboard therefore computes an effective inception date for each basket. The automatic rule is the first row where <code>price_coverage_share ≥ 0.60</code> and <code>cash_weight ≤ 0.25</code>. If no row satisfies that rule, the fallback is the first date where <code>cash_weight &lt; 0.95</code>. If a manual override exists in <code>config/basket_inception_overrides.yml</code>, that override becomes the effective inception date. Full raw history remains accessible in the website through a Full History mode.</p>
+      <table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>basket_code</th>
+      <th>basket_name</th>
+      <th>raw_history_start</th>
+      <th>default_inception_date</th>
+      <th>manual_override_date</th>
+      <th>effective_inception_date</th>
+      <th>price_coverage_at_inception</th>
+      <th>cash_weight_at_inception</th>
+      <th>rule_name</th>
+      <th>override_reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ADIT-E3</td>
+      <td>Oil Supply Disruption</td>
+      <td>2022-01-01</td>
+      <td>2023-11-01</td>
+      <td>NaN</td>
+      <td>2023-11-01</td>
+      <td>1.0</td>
+      <td>0.05</td>
+      <td>coverage>=0.60_cash<=0.25</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>ADIT-P1</td>
+      <td>China Governance</td>
+      <td>2022-01-01</td>
+      <td>2025-06-01</td>
+      <td>NaN</td>
+      <td>2025-06-01</td>
+      <td>1.0</td>
+      <td>0.05</td>
+      <td>coverage>=0.60_cash<=0.25</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>ADIT-P2</td>
+      <td>EM Governance</td>
+      <td>2022-01-01</td>
+      <td>2023-10-01</td>
+      <td>NaN</td>
+      <td>2023-10-01</td>
+      <td>1.0</td>
+      <td>0.05</td>
+      <td>coverage>=0.60_cash<=0.25</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>ADIT-P3</td>
+      <td>EU Breakup Risk</td>
+      <td>2022-01-01</td>
+      <td>2025-02-01</td>
+      <td>NaN</td>
+      <td>2025-02-01</td>
+      <td>1.0</td>
+      <td>0.05</td>
+      <td>coverage>=0.60_cash<=0.25</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>ADIT-P4</td>
+      <td>US Governance</td>
+      <td>2022-01-01</td>
+      <td>2023-02-01</td>
+      <td>NaN</td>
+      <td>2023-02-01</td>
+      <td>1.0</td>
+      <td>0.05</td>
+      <td>coverage>=0.60_cash<=0.25</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>ADIT-S2</td>
+      <td>Europe War & NATO Conflict</td>
+      <td>2022-01-01</td>
+      <td>2023-02-01</td>
+      <td>NaN</td>
+      <td>2023-02-01</td>
+      <td>1.0</td>
+      <td>0.05</td>
+      <td>coverage>=0.60_cash<=0.25</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>ADIT-S3</td>
+      <td>Middle East Armed Conflict</td>
+      <td>2022-01-01</td>
+      <td>2024-01-01</td>
+      <td>2024-01-01</td>
+      <td>2024-01-01</td>
+      <td>1.0</td>
+      <td>0.05</td>
+      <td>manual_override</td>
+      <td>Align visible basket inception with the 2024 conflict regime</td>
+    </tr>
+    <tr>
+      <td>ADIT-S4</td>
+      <td>US-China Conflict Escalation</td>
+      <td>2022-01-01</td>
+      <td>2023-10-01</td>
+      <td>NaN</td>
+      <td>2023-10-01</td>
+      <td>1.0</td>
+      <td>0.05</td>
+      <td>coverage>=0.60_cash<=0.25</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>ADIT-X3</td>
+      <td>Major Economy Recession</td>
+      <td>2022-01-01</td>
+      <td>2023-01-01</td>
+      <td>NaN</td>
+      <td>2023-01-01</td>
+      <td>1.0</td>
+      <td>0.05</td>
+      <td>coverage>=0.60_cash<=0.25</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>ADIT-X4</td>
+      <td>Pandemic & Health Crisis</td>
+      <td>2022-01-01</td>
+      <td>2025-07-01</td>
+      <td>NaN</td>
+      <td>2025-07-01</td>
+      <td>1.0</td>
+      <td>0.05</td>
+      <td>coverage>=0.60_cash<=0.25</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+
+      <h2>8. Tradable NAV Publishing</h2>
+      <p>The published level is now just <strong>Tradable NAV</strong>. It answers one question: “what money would the buyer have made by owning the basket through rolls, exits, costs, and cash management?”</p>
+      <p>For baskets like <code>ADIT-S3</code>, this keeps the chart focused on the tradable object rather than mixing it with a separate normalized risk overlay. The remaining diagnostics on the page are there to show coverage, concentration, and composition quality, not to publish a second headline index.</p>
+      <p>Tenor pressure has been removed from both selection scoring and maintenance. The engine now keeps only a minimal operational roll near expiry instead of forcing the basket toward a target tenor or expiry preference profile.</p>
+
+      <h2>9. Directionality And Risk-Up Semantics</h2>
+      <p>Every non-cash position is directionally explicit. The product distinguishes the raw market <code>YES</code> probability from the basket’s <code>Risk Price</code>. If the basket is long a risk-up escalation market, it holds <code>Long YES</code> and the risk price equals market YES. If the basket is long a de-escalation market on the opposite side, it holds <code>Long NO</code> and the risk price equals <code>1 - Market YES</code>.</p>
+      <ul>
+        <li><code>Long YES</code>: risk rises when the market YES probability rises.</li>
+        <li><code>Long NO</code>: risk rises when the market YES probability falls because the market itself describes de-escalation, normalization, or peace.</li>
+        <li>Website contract tables therefore show <code>Instruction</code>, <code>Market YES</code>, <code>Risk Price</code>, and a short <code>Why</code> label.</li>
+      </ul>
+      <p>Example: if a contract asks “Will Israel and Saudi Arabia normalize relations by March 31?”, the basket may hold <code>Long NO</code>. In that case the raw market YES can be low while the basket’s risk price is high, because failed normalization is treated as risk-up for the basket.</p>
+
+      <h2>10. Basket Slot Architecture</h2>
+      <p>Broad pattern matching alone was not strong enough for the highest-sensitivity geopolitical and energy baskets, so the engine now supports explicit slot schemas. Slot schemas are hard-coded thematic sub-buckets with per-slot caps, required-if-available rules, and proxy controls.</p>
+      <ul>
+        <li><code>ADIT-S3</code>: Iran-Israel escalation, Hamas ceasefire failure, Hezbollah/Lebanon, Red Sea/Hormuz disruption, US-Iran intervention, normalization failure.</li>
+        <li><code>ADIT-S2</code>: Russia territorial advance, ceasefire failure, NATO direct clash, Greenland/Arctic/Nordic tension, nuclear/strategic escalation, EU/NATO security fracture.</li>
+        <li><code>ADIT-E3</code>: Hormuz/Red Sea disruption, export-terminal/refinery hits, OPEC restriction, shipping disruption, producer shortfall, and capped oil-price proxy slots.</li>
+      </ul>
+      <p>This slot architecture is what prevents <code>ADIT-S2</code> from degenerating into a pile of near-zero tail contracts, and what prevents <code>ADIT-E3</code> from becoming an empty or pure crude-ladder basket when direct disruption markets exist.</p>
+
+      <h2>11. Level Construction And Performance Proxies</h2>
+      <p>Two level paths are published. First, per-basket monthly level proxies from weighted contract prices plus cash sleeve. Second, an aggregate weighted index-level path across baskets. Each path is aligned with rebalance points and accompanied by entries/exits and turnover diagnostics.</p>
+      <div class="img-wrap">
+        <img src='charts/summary/aggregate_basket_level.png' alt='aggregate level chart' style='width:100%;border:1px solid #e5e7eb;border-radius:8px;background:#fff;' />
+      </div>
+      <div class="img-wrap">
+        <img src='charts/summary/aggregate_cash_turnover.png' alt='aggregate cash chart' style='width:100%;border:1px solid #e5e7eb;border-radius:8px;background:#fff;' />
+      </div>
+      <p>Macro-factor overlays are computed from market-level beta exposures inherited from community factor models and aggregated by basket weights each month.</p>
+
+      <h2>12. Governance Checks And Failure Modes</h2>
+      <p>Quality control checks focus on coherence and leak prevention: no stale-expiry holdings after rebalance, no lookahead against inferred first-seen dates, no duplicate exclusivity groups per basket-month, and bounded position/cash constraints. If any check fails, artifacts make the failure visible at CSV level for audit and correction.</p>
+
+      <h2>13. Reproducible Output Artifacts</h2>
+      <p>The following outputs define the single operational workflow and are sufficient for third-party replication:</p>
+      <ul>
+        <li><code>last_year_monthly_compositions.csv</code>: full contract-level composition each month.</li>
+        <li><code>basket_level_monthly.csv</code>: per-basket monthly level, cash, entries/exits, turnover.</li>
+        <li><code>aggregate_basket_level.csv</code>: aggregate level path with rebalance-change diagnostics.</li>
+        <li><code>basket_inception_policy.csv</code>: raw history start, automatic inception date, override, and effective dashboard start for each basket.</li>
+        <li><code>slot_coverage_diagnostics.csv</code>: per-slot candidate and selected coverage by rebalance.</li>
+        <li><code>monthly_cash_positions.csv</code>: monthly cash and risk context by basket.</li>
+        <li><code>contract_lifecycle_events.csv</code>: entry/exit events with reasons.</li>
+        <li><code>rebalance_transitions.csv</code> and <code>rebalance_cost_model.csv</code>: execution diagnostics.</li>
+      </ul>
+
+      <h2>14. Appendices (Full Tables)</h2>
+      <details>
+        <summary>Appendix A: Full Basket Rulebook</summary>
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Domain</th><th>Code</th><th>Basket</th><th>Target N</th><th>Min-Max N</th><th>Cash</th><th>Allowed Categories</th><th>Diversification Caps</th><th>Include Patterns</th><th>Exclude Patterns</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>CONFLICT</td><td>ADIT-S4</td><td>US-China Conflict Escalation</td><td>18</td><td>15-50</td><td>10%</td><td><code>china_geopolitics</code>, <code>global_politics</code>, <code>us_military</code>, <code>legal_regulatory</code>, <code>us_economic</code></td><td>template≤2, community≤4, event≤2, exclusive≤1</td><td><code>us.?china|china.?us</code> (1.2), <code>taiwan|south china sea|taiwan strait</code> (1.0), <code>trade war|tariff|sanction</code> (0.9), <code>beijing|\bpla\b|rare earth|tsmc</code> (0.7)</td><td><code>state of the union|say \&quot;?taiwan\&quot;?</code>, <code>gta vi</code></td></tr><tr><td>CONFLICT</td><td>ADIT-S3</td><td>Middle East Armed Conflict</td><td>18</td><td>15-50</td><td>10%</td><td><code>middle_east</code>, <code>global_politics</code>, <code>us_military</code>, <code>energy_commodities</code></td><td>template≤1, community≤5, event≤1, exclusive≤1</td><td><code>middle east|iran|israel|gaza</code> (1.2), <code>hamas|hezbollah|houthi|red sea</code> (1.0), <code>saudi|uae|lebanon|syria|iraq|yemen|tehran</code> (0.9)</td><td><code>fed chair|trump nominate|nobel|peace prize</code></td></tr><tr><td>CONFLICT</td><td>ADIT-S2</td><td>Europe War &amp; NATO Conflict</td><td>16</td><td>15-50</td><td>10%</td><td><code>russia_ukraine</code>, <code>global_politics</code>, <code>us_military</code></td><td>template≤1, community≤4, event≤1, exclusive≤1</td><td><code>nato|ukraine|russia|putin|kremlin</code> (1.2), <code>european war|europe conflict|baltic|poland</code> (0.9), <code>europe|eu troops|germany|france|united kingdom|\buk\b|greenland|denmark|arctic|nordic|finland|sweden</code> (0.6)</td><td><code>nobel|eurovision|gta vi|maduro</code></td></tr><tr><td>ENERGY</td><td>ADIT-E3</td><td>Oil Supply Disruption</td><td>16</td><td>15-50</td><td>10%</td><td><code>energy_commodities</code>, <code>middle_east</code>, <code>global_politics</code></td><td>template≤2, community≤4, event≤3, exclusive≤1</td><td><code>\boil\b|\bcrude\b|\bbrent\b|\bwti\b</code> (1.2), <code>opec|pipeline|hormuz</code> (1.0), <code>natural gas|lng|energy crisis</code> (0.8)</td><td><code>academy awards?|camera|documentary|\btoken\b|\bfdv\b</code></td></tr><tr><td>GENERAL</td><td>ADIT-X4</td><td>Pandemic &amp; Health Crisis</td><td>16</td><td>15-50</td><td>10%</td><td><code>pandemic_health</code></td><td>template≤4, community≤4, event≤4, exclusive≤1</td><td><code>\bpandemic\b|outbreak|health emergency</code> (1.2), <code>covid|virus|h5n1|ebola|mpox|measles|\bflu\b</code> (1.0), <code>\bcdc\b|world health organization|\bfda\b|vaccine</code> (0.7)</td><td>None</td></tr><tr><td>GENERAL</td><td>ADIT-X3</td><td>Major Economy Recession</td><td>18</td><td>15-50</td><td>10%</td><td><code>us_economic</code>, <code>fed_monetary_policy</code>, <code>global_politics</code>, <code>legal_regulatory</code></td><td>template≤1, community≤5, event≤1, exclusive≤1</td><td><code>recession|gdp|unemployment</code> (1.1), <code>inflation|cpi|ppi|housing|retail sales</code> (1.0), <code>\bfed\b|rates?|yield|treasury|default|bankrupt</code> (0.8)</td><td><code>trump nominate|fed chair\?|military clash</code></td></tr><tr><td>POLITICAL</td><td>ADIT-P1</td><td>China Governance</td><td>16</td><td>15-50</td><td>10%</td><td><code>china_geopolitics</code>, <code>global_politics</code></td><td>template≤2, community≤4, event≤2, exclusive≤1</td><td><code>\bxi\b|ccp|communist party</code> (1.2), <code>china governance|china leadership|china policy</code> (1.0), <code>beijing|china regulator</code> (0.7)</td><td><code>divorce|nobel|peace prize|meet with|visit us</code></td></tr><tr><td>POLITICAL</td><td>ADIT-P4</td><td>US Governance</td><td>16</td><td>15-50</td><td>10%</td><td><code>legal_regulatory</code>, <code>global_politics</code>, <code>us_economic</code>, <code>fed_monetary_policy</code></td><td>template≤1, community≤4, event≤1, exclusive≤1</td><td><code>congress|supreme court|white house</code> (1.1), <code>budget|shutdown|debt ceiling</code> (1.0), <code>fed chair|doj|\bsec\b|\bftc\b|regulation|policy</code> (0.8)</td><td><code>epstein|testify|contempt|last week tonight|john oliver</code></td></tr><tr><td>POLITICAL</td><td>ADIT-P3</td><td>EU Breakup Risk</td><td>16</td><td>15-50</td><td>10%</td><td><code>global_politics</code>, <code>us_economic</code>, <code>fed_monetary_policy</code>, <code>russia_ukraine</code></td><td>template≤1, community≤4, event≤2, exclusive≤1</td><td><code>\beu\b|european union|eurozone</code> (1.0), <code>brexit|grexit|frexit|italexit|eu breakup</code> (1.2), <code>euro\b|schengen|ecb</code> (0.8)</td><td><code>trump and putin meet</code></td></tr><tr><td>POLITICAL</td><td>ADIT-P2</td><td>EM Governance</td><td>18</td><td>15-50</td><td>10%</td><td><code>global_politics</code>, <code>us_economic</code>, <code>fed_monetary_policy</code>, <code>legal_regulatory</code></td><td>template≤2, community≤4, event≤3, exclusive≤1</td><td><code>emerging market</code> (1.0), <code>\bargentina\b|\bbrazil\b|\bindia\b|\bindonesia\b|\bmexico\b|\bnigeria\b|\bturkey\b|\bsouth africa\b|\bvietnam\b|\bpakistan\b|\bphilippines\b|\bmalaysia\b|\bcolombia\b</code> (1.0), <code>governance|policy|regulator|central bank</code> (0.6)</td><td><code>swiss|ecb|federal reserve|\bfed\b|eurozone|european union</code></td></tr>
+          </tbody>
+        </table>
+      </details>
+      <details>
+        <summary>Appendix B: Ticker Coverage Summary</summary>
+        <table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>domain</th>
+      <th>basket_code</th>
+      <th>basket_name</th>
+      <th>selected_markets</th>
+      <th>selected_tickers</th>
+      <th>avg_chain_market_count</th>
+      <th>max_chain_market_count</th>
+      <th>unique_event_families</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CONFLICT</td>
+      <td>ADIT-S2</td>
+      <td>Europe War & NATO Conflict</td>
+      <td>93</td>
+      <td>84</td>
+      <td>2.473118</td>
+      <td>10</td>
+      <td>79</td>
+    </tr>
+    <tr>
+      <td>CONFLICT</td>
+      <td>ADIT-S3</td>
+      <td>Middle East Armed Conflict</td>
+      <td>88</td>
+      <td>76</td>
+      <td>3.715909</td>
+      <td>15</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <td>CONFLICT</td>
+      <td>ADIT-S4</td>
+      <td>US-China Conflict Escalation</td>
+      <td>22</td>
+      <td>20</td>
+      <td>1.545455</td>
+      <td>4</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>ENERGY</td>
+      <td>ADIT-E3</td>
+      <td>Oil Supply Disruption</td>
+      <td>20</td>
+      <td>20</td>
+      <td>1.900000</td>
+      <td>5</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>GENERAL</td>
+      <td>ADIT-X3</td>
+      <td>Major Economy Recession</td>
+      <td>124</td>
+      <td>100</td>
+      <td>3.403226</td>
+      <td>15</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <td>GENERAL</td>
+      <td>ADIT-X4</td>
+      <td>Pandemic & Health Crisis</td>
+      <td>48</td>
+      <td>46</td>
+      <td>1.458333</td>
+      <td>6</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>POLITICAL</td>
+      <td>ADIT-P1</td>
+      <td>China Governance</td>
+      <td>17</td>
+      <td>16</td>
+      <td>2.176471</td>
+      <td>8</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>POLITICAL</td>
+      <td>ADIT-P2</td>
+      <td>EM Governance</td>
+      <td>88</td>
+      <td>81</td>
+      <td>1.875000</td>
+      <td>5</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <td>POLITICAL</td>
+      <td>ADIT-P3</td>
+      <td>EU Breakup Risk</td>
+      <td>29</td>
+      <td>29</td>
+      <td>1.689655</td>
+      <td>8</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>POLITICAL</td>
+      <td>ADIT-P4</td>
+      <td>US Governance</td>
+      <td>24</td>
+      <td>24</td>
+      <td>1.541667</td>
+      <td>7</td>
+      <td>18</td>
+    </tr>
+  </tbody>
+</table>
+      </details>
+      <details>
+        <summary>Appendix C: Aggregate Time Series</summary>
+        <table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>rebalance_date</th>
+      <th>overall_tradable_nav</th>
+      <th>overall_basket_level</th>
+      <th>overall_cash_weight</th>
+      <th>overall_price_coverage_share</th>
+      <th>n_baskets</th>
+      <th>total_entries</th>
+      <th>total_exits</th>
+      <th>total_turnover</th>
+      <th>rebalanced_baskets</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2022-01-01</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-02</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-03</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-04</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-05</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-06</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-07</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-08</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-09</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-10</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-11</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-12</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-13</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-14</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-15</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-16</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-17</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-18</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-19</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-20</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-21</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-22</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-23</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-24</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-25</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-26</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-27</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-28</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-29</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-30</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-01-31</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-01</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-02</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-03</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-04</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-05</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-06</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-07</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-08</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-09</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-10</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-11</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-12</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-13</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-14</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-15</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-16</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-17</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-18</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-19</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-20</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-21</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-22</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-23</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-24</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-25</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-26</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-27</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-02-28</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.550329</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-01</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-02</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-03</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-04</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-05</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-06</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-07</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-08</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-09</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-10</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-11</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-12</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-13</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-14</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-15</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-16</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-17</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-18</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-19</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-20</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-21</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-22</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-23</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-24</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-25</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-26</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-27</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-28</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-29</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-30</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-03-31</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.482175</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-01</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-02</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-03</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-04</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-05</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-06</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-07</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-08</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-09</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-10</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-11</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-12</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-13</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-14</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-15</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-16</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-17</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-18</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-19</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-20</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-21</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-22</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-23</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-24</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-25</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-26</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-27</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-28</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-29</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-04-30</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.490659</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-01</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-02</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-03</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-04</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-05</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-06</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-07</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-08</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-09</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-10</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-11</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-12</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-13</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-14</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-15</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-16</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-17</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-18</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-19</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-20</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-21</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-22</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-23</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-24</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-25</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-26</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-27</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-28</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-29</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-30</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-05-31</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.416595</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-01</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-02</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-03</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-04</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-05</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-06</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-07</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-08</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-09</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-10</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-11</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-12</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-13</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-14</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-15</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-16</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-17</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-18</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-19</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-20</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-21</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-22</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-23</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-24</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-25</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-26</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-27</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-28</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2022-06-29</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>1.0</td>
+      <td>0.522972</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+      </details>
+      <details>
+        <summary>Appendix D: Cash, Cost, Transition, Lifecycle, Exclusivity QC</summary>
+        <h3>Cash Policy Summary</h3>
+        <table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>basket_code</th>
+      <th>avg_cash_weight</th>
+      <th>min_cash_weight</th>
+      <th>max_cash_weight</th>
+      <th>avg_turnover</th>
+      <th>avg_treasury_risk</th>
+      <th>avg_broad_risk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ADIT-E3</td>
+      <td>0.210323</td>
+      <td>0.164300</td>
+      <td>0.23</td>
+      <td>0.445583</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>ADIT-P1</td>
+      <td>0.186353</td>
+      <td>0.156181</td>
+      <td>0.23</td>
+      <td>0.215577</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>ADIT-P2</td>
+      <td>0.209029</td>
+      <td>0.180000</td>
+      <td>0.23</td>
+      <td>0.567074</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>ADIT-P3</td>
+      <td>0.216507</td>
+      <td>0.140967</td>
+      <td>0.23</td>
+      <td>0.443656</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>ADIT-P4</td>
+      <td>0.201186</td>
+      <td>0.156180</td>
+      <td>0.23</td>
+      <td>0.307309</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>ADIT-S2</td>
+      <td>0.208394</td>
+      <td>0.148722</td>
+      <td>0.23</td>
+      <td>0.419139</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>ADIT-S3</td>
+      <td>0.218403</td>
+      <td>0.159254</td>
+      <td>0.23</td>
+      <td>0.516237</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>ADIT-S4</td>
+      <td>0.212692</td>
+      <td>0.157073</td>
+      <td>0.23</td>
+      <td>0.397617</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>ADIT-X3</td>
+      <td>0.214286</td>
+      <td>0.132332</td>
+      <td>0.23</td>
+      <td>0.539086</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>ADIT-X4</td>
+      <td>0.207926</td>
+      <td>0.156191</td>
+      <td>0.23</td>
+      <td>0.397114</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>Cost Summary</h3>
+        <table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>basket_code</th>
+      <th>avg_estimated_cost_bps</th>
+      <th>max_estimated_cost_bps</th>
+      <th>avg_estimated_drag</th>
+      <th>avg_turnover</th>
+      <th>avg_cash_weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ADIT-E3</td>
+      <td>36.109674</td>
+      <td>47.225000</td>
+      <td>0.001735</td>
+      <td>0.445583</td>
+      <td>0.210323</td>
+    </tr>
+    <tr>
+      <td>ADIT-P1</td>
+      <td>27.774155</td>
+      <td>49.750000</td>
+      <td>0.000816</td>
+      <td>0.215577</td>
+      <td>0.186353</td>
+    </tr>
+    <tr>
+      <td>ADIT-P2</td>
+      <td>44.105382</td>
+      <td>58.424444</td>
+      <td>0.002592</td>
+      <td>0.567074</td>
+      <td>0.209029</td>
+    </tr>
+    <tr>
+      <td>ADIT-P3</td>
+      <td>38.474613</td>
+      <td>49.750000</td>
+      <td>0.001843</td>
+      <td>0.443656</td>
+      <td>0.216507</td>
+    </tr>
+    <tr>
+      <td>ADIT-P4</td>
+      <td>33.489146</td>
+      <td>74.750000</td>
+      <td>0.001189</td>
+      <td>0.307309</td>
+      <td>0.201186</td>
+    </tr>
+    <tr>
+      <td>ADIT-S2</td>
+      <td>37.611158</td>
+      <td>64.501222</td>
+      <td>0.001825</td>
+      <td>0.419139</td>
+      <td>0.208394</td>
+    </tr>
+    <tr>
+      <td>ADIT-S3</td>
+      <td>43.815852</td>
+      <td>63.225000</td>
+      <td>0.002432</td>
+      <td>0.516237</td>
+      <td>0.218403</td>
+    </tr>
+    <tr>
+      <td>ADIT-S4</td>
+      <td>37.861025</td>
+      <td>64.501222</td>
+      <td>0.001725</td>
+      <td>0.397617</td>
+      <td>0.212692</td>
+    </tr>
+    <tr>
+      <td>ADIT-X3</td>
+      <td>45.928500</td>
+      <td>66.416667</td>
+      <td>0.002660</td>
+      <td>0.539086</td>
+      <td>0.214286</td>
+    </tr>
+    <tr>
+      <td>ADIT-X4</td>
+      <td>35.923567</td>
+      <td>53.225000</td>
+      <td>0.001663</td>
+      <td>0.397114</td>
+      <td>0.207926</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>Transition Summary</h3>
+        <table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>basket_code</th>
+      <th>avg_turnover</th>
+      <th>avg_entries</th>
+      <th>avg_exits</th>
+      <th>avg_upsizes</th>
+      <th>avg_downsizes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ADIT-E3</td>
+      <td>0.516078</td>
+      <td>2.857143</td>
+      <td>0.714286</td>
+      <td>0.142857</td>
+      <td>2.428571</td>
+    </tr>
+    <tr>
+      <td>ADIT-P1</td>
+      <td>0.245834</td>
+      <td>0.944444</td>
+      <td>0.333333</td>
+      <td>0.666667</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <td>ADIT-P2</td>
+      <td>0.547998</td>
+      <td>5.933333</td>
+      <td>5.333333</td>
+      <td>1.400000</td>
+      <td>1.466667</td>
+    </tr>
+    <tr>
+      <td>ADIT-P3</td>
+      <td>0.513186</td>
+      <td>2.071429</td>
+      <td>1.142857</td>
+      <td>0.571429</td>
+      <td>1.214286</td>
+    </tr>
+    <tr>
+      <td>ADIT-P4</td>
+      <td>0.336697</td>
+      <td>0.800000</td>
+      <td>0.600000</td>
+      <td>0.533333</td>
+      <td>0.266667</td>
+    </tr>
+    <tr>
+      <td>ADIT-S2</td>
+      <td>0.406443</td>
+      <td>3.241379</td>
+      <td>2.793103</td>
+      <td>1.862069</td>
+      <td>1.344828</td>
+    </tr>
+    <tr>
+      <td>ADIT-S3</td>
+      <td>0.530756</td>
+      <td>3.296296</td>
+      <td>2.740741</td>
+      <td>1.111111</td>
+      <td>1.037037</td>
+    </tr>
+    <tr>
+      <td>ADIT-S4</td>
+      <td>0.442494</td>
+      <td>1.222222</td>
+      <td>0.722222</td>
+      <td>0.222222</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <td>ADIT-X3</td>
+      <td>0.561863</td>
+      <td>3.705882</td>
+      <td>3.176471</td>
+      <td>0.647059</td>
+      <td>1.088235</td>
+    </tr>
+    <tr>
+      <td>ADIT-X4</td>
+      <td>0.392217</td>
+      <td>2.526316</td>
+      <td>2.000000</td>
+      <td>1.315789</td>
+      <td>0.578947</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>Lifecycle Exit Summary</h3>
+        <table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>basket_code</th>
+      <th>exit_events</th>
+      <th>expiry_exits</th>
+      <th>certainty_exits</th>
+      <th>rebalance_exits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ADIT-E3</td>
+      <td>5</td>
+      <td>3</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>ADIT-P1</td>
+      <td>6</td>
+      <td>5</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>ADIT-P2</td>
+      <td>80</td>
+      <td>38</td>
+      <td>2</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>ADIT-P3</td>
+      <td>16</td>
+      <td>11</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>ADIT-P4</td>
+      <td>18</td>
+      <td>5</td>
+      <td>0</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>ADIT-S2</td>
+      <td>81</td>
+      <td>49</td>
+      <td>0</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <td>ADIT-S3</td>
+      <td>74</td>
+      <td>57</td>
+      <td>0</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>ADIT-S4</td>
+      <td>13</td>
+      <td>10</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>ADIT-X3</td>
+      <td>108</td>
+      <td>56</td>
+      <td>1</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <td>ADIT-X4</td>
+      <td>38</td>
+      <td>11</td>
+      <td>0</td>
+      <td>27</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>Mutual-Exclusion QC (Should Be Empty)</h3>
+        <p class='muted'>No rows available.</p>
+      </details>
+      <details>
+        <summary>Appendix E: Certainty and Expiry Exit Examples</summary>
+        <h3>Certainty-Threshold Exit Examples (95/5 Rule)</h3>
+        <table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>rebalance_date</th>
+      <th>basket_code</th>
+      <th>market_id</th>
+      <th>title</th>
+      <th>price_at_prev</th>
+      <th>reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2023-05-01</td>
+      <td>ADIT-X3</td>
+      <td>poly_will-the-fed-decrease-interest-rates-by-25-bps-after-its-may-meeting</td>
+      <td>Will the Fed decrease interest rates by 25 bps after its May meeting?</td>
+      <td>0.050</td>
+      <td>certainty_threshold</td>
+    </tr>
+    <tr>
+      <td>2025-12-01</td>
+      <td>ADIT-P2</td>
+      <td>poly_will-brazil-win-the-2025-sailgp-championship-season-5</td>
+      <td>Will Brazil win the 2025 SailGP Championship Season 5?</td>
+      <td>0.013</td>
+      <td>certainty_threshold</td>
+    </tr>
+    <tr>
+      <td>2026-02-01</td>
+      <td>ADIT-P2</td>
+      <td>poly_greece-x-turkey-military-engagement-by-june-30</td>
+      <td>Greece x Turkey military engagement by June 30?</td>
+      <td>0.050</td>
+      <td>certainty_threshold</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>Expiry/Resolution Exit Examples</h3>
+        <table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>rebalance_date</th>
+      <th>basket_code</th>
+      <th>market_id</th>
+      <th>title</th>
+      <th>end_date</th>
+      <th>reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2022-03-01</td>
+      <td>ADIT-X3</td>
+      <td>poly_will-annual-inflation-in-the-european-union-be-5p3-or-more-in-january</td>
+      <td>Will annual inflation in the European Union be 5.3% or more in January?</td>
+      <td>2022-02-23</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-03-01</td>
+      <td>ADIT-X3</td>
+      <td>poly_will-annual-inflation-in-the-european-union-be-5p5-or-more-in-january</td>
+      <td>Will annual inflation in the European Union be 5.5% or more in January?</td>
+      <td>2022-02-23</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-03-01</td>
+      <td>ADIT-X3</td>
+      <td>poly_will-annual-inflation-in-the-european-union-be-5p7-or-more-in-january</td>
+      <td>Will annual inflation in the European Union be 5.7% or more in January?</td>
+      <td>2022-02-23</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-03-01</td>
+      <td>ADIT-X4</td>
+      <td>poly_will-the-us-7-day-average-of-covid-19-cases-on-february-11-be-higher-than-on-february-18</td>
+      <td>Will the US 7-day average of Covid-19 cases on February 11 be higher than on February 18?</td>
+      <td>2022-02-25</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-04-01</td>
+      <td>ADIT-P3</td>
+      <td>poly_will-annual-inflation-in-the-european-union-be-5p3-or-more-in-january</td>
+      <td>Will annual inflation in the European Union be 5.3% or more in January?</td>
+      <td>2022-02-23</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-04-01</td>
+      <td>ADIT-P3</td>
+      <td>poly_will-annual-inflation-in-the-european-union-be-5p5-or-more-in-january</td>
+      <td>Will annual inflation in the European Union be 5.5% or more in January?</td>
+      <td>2022-02-23</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-04-01</td>
+      <td>ADIT-P3</td>
+      <td>poly_will-annual-inflation-in-the-european-union-be-5p7-or-more-in-january</td>
+      <td>Will annual inflation in the European Union be 5.7% or more in January?</td>
+      <td>2022-02-23</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-04-01</td>
+      <td>ADIT-S2</td>
+      <td>poly_will-the-russian-ruble-rub-fall-below-0p005-by-march-25</td>
+      <td>Will the Russian Ruble (RUB) fall below $0.005 by March 25?</td>
+      <td>2022-03-25</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-05-01</td>
+      <td>ADIT-P1</td>
+      <td>poly_beijing-2022-winter-olympics-will-russia-have-any-medals-stripped-for-doping</td>
+      <td>Beijing 2022 Winter Olympics: Will Russia have any medals stripped for doping?</td>
+      <td>2022-04-01</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-05-01</td>
+      <td>ADIT-S2</td>
+      <td>poly_will-nato-declare-a-no-fly-zone-over-any-ukrainian-territory-by-april-30-2022</td>
+      <td>Will NATO declare a No Fly-Zone over any Ukrainian territory by April 30, 2022?</td>
+      <td>2022-04-30</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-05-01</td>
+      <td>ADIT-S2</td>
+      <td>poly_will-russia-have-its-unsc-permanent-member-status-stripped-by-april-30-2022</td>
+      <td>Will Russia have its UNSC permanent member status stripped by April 30, 2022?</td>
+      <td>2022-04-30</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-05-01</td>
+      <td>ADIT-S4</td>
+      <td>poly_beijing-2022-winter-olympics-will-russia-have-any-medals-stripped-for-doping</td>
+      <td>Beijing 2022 Winter Olympics: Will Russia have any medals stripped for doping?</td>
+      <td>2022-04-01</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-06-01</td>
+      <td>ADIT-S2</td>
+      <td>poly_will-ukraine-formally-cede-crimea-luhansk-or-donetsk-by-may-31-2022</td>
+      <td>Will Ukraine formally cede Crimea, Luhansk, or Donetsk by May 31, 2022?</td>
+      <td>2022-05-31</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-06-01</td>
+      <td>ADIT-S2</td>
+      <td>poly_will-volodymyr-zelenskyy-and-vladimir-putin-meet-in-person-before-june-2022</td>
+      <td>Will Volodymyr Zelenskyy and Vladimir Putin meet in person before June 2022?</td>
+      <td>2022-05-31</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-07-01</td>
+      <td>ADIT-S2</td>
+      <td>poly_will-any-nato-member-country-invoke-article-5-by-june-30-2022</td>
+      <td>Will any NATO member country invoke Article 5 by June 30, 2022?</td>
+      <td>2022-06-30</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-07-01</td>
+      <td>ADIT-X3</td>
+      <td>poly_will-the-next-recession-in-the-us-happen-by-q1-2022</td>
+      <td>Will the next recession in the US happen by Q1 2022?</td>
+      <td>2022-04-28</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-S2</td>
+      <td>poly_will-sergei-shoigu-remain-minister-of-defense-of-russia-through-july-2022</td>
+      <td>Will Sergei Shoigu remain Minister of Defense of Russia through July 2022?</td>
+      <td>2022-07-31</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-S2</td>
+      <td>poly_will-ukraine-be-a-member-state-of-the-european-union-by-july-31-2022</td>
+      <td>Will Ukraine be a member state of the European Union by July 31, 2022?</td>
+      <td>2022-07-31</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-S4</td>
+      <td>poly_will-nancy-pelosi-visit-taiwan-before-june-2022</td>
+      <td>Will Nancy Pelosi visit Taiwan before June 2022?</td>
+      <td>2022-06-01</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-X3</td>
+      <td>poly_will-the-fed-set-interest-rates-above-2pt00-after-their-scheduled-july-meeting</td>
+      <td>Will the Fed set interest rates above 2.00% (50 bps or more) after their scheduled July meeting?</td>
+      <td>2022-07-27</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-X3</td>
+      <td>poly_will-the-fed-set-interest-rates-above-2pt25-after-their-scheduled-july-meeting</td>
+      <td>Will the Fed set interest rates above 2.25% (75 bps or more) after their scheduled July meeting?</td>
+      <td>2022-07-27</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-X3</td>
+      <td>poly_will-the-fed-set-interest-rates-above-2pt50-100-bips-or-more-after-their-scheduled-july-meeting</td>
+      <td>Will the Fed set interest rates above 2.50% (100 bps or more) after their scheduled July meeting?</td>
+      <td>2022-07-27</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-X3</td>
+      <td>poly_will-there-be-a-recession-in-q2-of-2022</td>
+      <td>Will there be a recession in Q2 of 2022?</td>
+      <td>2022-07-28</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-X4</td>
+      <td>poly_will-ecdc-announce-a-new-covid-19-variant-of-concern-before-august-2022</td>
+      <td>Will ECDC announce a new COVID-19 "Variant of Concern" before August 2022?</td>
+      <td>2022-07-31</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+    <tr>
+      <td>2022-10-01</td>
+      <td>ADIT-X3</td>
+      <td>poly_will-the-fed-increase-interest-rates-by-100-bps-after-their-september-meeting</td>
+      <td>Will the Fed increase interest rates by 100 bps after their September meeting?</td>
+      <td>2022-09-21</td>
+      <td>expiry_or_resolution</td>
+    </tr>
+  </tbody>
+</table>
+      </details>
+      <details>
+        <summary>Appendix F: Factor Exposure Snapshot</summary>
+        <table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>rebalance_date</th>
+      <th>basket_code</th>
+      <th>treasury_exposure_abs</th>
+      <th>beta_SPY</th>
+      <th>beta_QQQ</th>
+      <th>beta_VIX</th>
+      <th>beta_USO</th>
+      <th>beta_GLD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2022-02-01</td>
+      <td>ADIT-P3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-02-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-02-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-02-01</td>
+      <td>ADIT-X4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-03-01</td>
+      <td>ADIT-P1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-03-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-03-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-03-01</td>
+      <td>ADIT-S4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-03-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-03-01</td>
+      <td>ADIT-X4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-04-01</td>
+      <td>ADIT-P3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-04-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-04-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-04-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-04-01</td>
+      <td>ADIT-X4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-05-01</td>
+      <td>ADIT-P1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-05-01</td>
+      <td>ADIT-P3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-05-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-05-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-05-01</td>
+      <td>ADIT-S4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-05-01</td>
+      <td>ADIT-X4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-06-01</td>
+      <td>ADIT-P1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-06-01</td>
+      <td>ADIT-P3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-06-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-06-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-06-01</td>
+      <td>ADIT-X4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-07-01</td>
+      <td>ADIT-P1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-07-01</td>
+      <td>ADIT-P3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-07-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-07-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-07-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-07-01</td>
+      <td>ADIT-X4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-P1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-S4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-08-01</td>
+      <td>ADIT-X4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-09-01</td>
+      <td>ADIT-P1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-09-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-09-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-09-01</td>
+      <td>ADIT-X4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-10-01</td>
+      <td>ADIT-P1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-10-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-10-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-10-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-10-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-10-01</td>
+      <td>ADIT-X4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-11-01</td>
+      <td>ADIT-P1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-11-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-11-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-11-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-11-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-11-01</td>
+      <td>ADIT-X4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-12-01</td>
+      <td>ADIT-P1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-12-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-12-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-12-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-12-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2022-12-01</td>
+      <td>ADIT-X4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-01-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-02-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-02-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-03-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-03-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-03-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-04-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-04-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-05-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-05-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-06-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-07-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-10-01</td>
+      <td>ADIT-P2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-10-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-10-01</td>
+      <td>ADIT-S4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-11-01</td>
+      <td>ADIT-E3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-11-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2023-12-01</td>
+      <td>ADIT-E3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-01-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-01-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-01-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-02-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-02-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-02-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-03-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-03-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-04-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-04-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-04-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-05-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-06-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-06-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-07-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-07-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-08-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-09-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-10-01</td>
+      <td>ADIT-E3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-10-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-10-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-11-01</td>
+      <td>ADIT-P3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-11-01</td>
+      <td>ADIT-P4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-11-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-11-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2024-12-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-01-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-01-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-01-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-02-01</td>
+      <td>ADIT-P2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-02-01</td>
+      <td>ADIT-P3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-02-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-02-01</td>
+      <td>ADIT-S4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-02-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-03-01</td>
+      <td>ADIT-P2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-03-01</td>
+      <td>ADIT-P3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-03-01</td>
+      <td>ADIT-S2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-03-01</td>
+      <td>ADIT-S3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-03-01</td>
+      <td>ADIT-S4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-03-01</td>
+      <td>ADIT-X3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-04-01</td>
+      <td>ADIT-P2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2025-04-01</td>
+      <td>ADIT-P3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+      </details>
+    </article>
+  </div>
+</body>
+</html>
