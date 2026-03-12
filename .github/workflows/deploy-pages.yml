@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, claude/deploy-website-nCEB1]
   workflow_dispatch:
 
 permissions:
