@@ -7499,6 +7499,8 @@ def run_thematic_generation(
     exposure_max_workers: int = 8,
     exposure_model: str | None = None,
     log_progress: bool = False,
+    db_url: str | None = None,
+    run_key: str | None = None,
 ) -> dict[str, str]:
     if refresh_exposure_directions:
         _refresh_exposure_direction_cache(
@@ -7508,11 +7510,43 @@ def run_thematic_generation(
             max_workers=exposure_max_workers,
             model=exposure_model,
         )
-    universe = load_market_universe(
-        processed_dir,
-        require_temporal_history=require_temporal_history,
-    )
-    chain_meta, chain_markets = load_ticker_chains(processed_dir)
+    _db_tmpdir = None
+    if db_url:
+        from prediction_basket.db_io import (
+            load_market_universe_from_db,
+            load_ticker_chains_from_db,
+            load_prices_from_db,
+            load_market_lifecycle_from_db,
+        )
+        import tempfile as _tmpmod
+        _db_tmpdir = _tmpmod.mkdtemp(prefix="engine_db_")
+        _db_processed = Path(_db_tmpdir)
+
+        universe = load_market_universe_from_db(db_url)
+        chain_meta, chain_markets = load_ticker_chains_from_db(db_url)
+
+        # Write temporary parquets so attach_asof_prices / build_daily_basket_nav work
+        prices_df = load_prices_from_db(db_url)
+        prices_df.to_parquet(_db_processed / "prices.parquet", index=False)
+
+        lifecycle_df = load_market_lifecycle_from_db(db_url)
+        # Write as polymarket_market_history.parquet with columns expected by load_market_lifecycle
+        hist_for_parquet = lifecycle_df.rename(columns={
+            "created_date": "created_at",
+            "end_date": "end_date",
+            "resolution_date": "resolution_time",
+        })
+        hist_for_parquet["closed_time"] = lifecycle_df["inactive_date"]
+        hist_for_parquet.to_parquet(_db_processed / "polymarket_market_history.parquet", index=False)
+
+        # Override processed_dir so downstream functions read from temp dir
+        processed_dir = str(_db_processed)
+    else:
+        universe = load_market_universe(
+            processed_dir,
+            require_temporal_history=require_temporal_history,
+        )
+        chain_meta, chain_markets = load_ticker_chains(processed_dir)
     builder = ThematicBasketBuilder(
         universe=universe,
         specs=default_specs(),
@@ -7762,6 +7796,33 @@ def run_thematic_generation(
     if prune_unused:
         _prune_unused_outputs(root_out)
 
+    # Write results to DB if --db-url is set
+    if db_url and run_key:
+        from prediction_basket.db_io import write_results_to_db
+        _db_results = {}
+        # Read the CSVs we just wrote to build DataFrames for DB writing
+        _csv_map = {
+            "basket_levels_df": root_out / "basket_level_monthly.csv",
+            "aggregate_df": root_out / "aggregate_basket_level.csv",
+            "compositions_df": root_out / "last_year_monthly_compositions.csv",
+            "factor_exposure_df": root_out / "factor_exposure_monthly.csv",
+            "ticker_registry_df": root_out / "ticker_chain_registry.csv",
+            "ticker_history_df": root_out / "ticker_chain_history.csv",
+            "lifecycle_df": root_out / "contract_lifecycle_events.csv",
+            "cost_model_df": root_out / "rebalance_cost_model.csv",
+        }
+        for key, csv_path in _csv_map.items():
+            if csv_path.exists():
+                _db_results[key] = pd.read_csv(csv_path)
+            else:
+                _db_results[key] = pd.DataFrame()
+        write_results_to_db(db_url, run_key, _db_results)
+
+    # Clean up temp DB processed dir if created
+    if _db_tmpdir:
+        import shutil
+        shutil.rmtree(_db_tmpdir, ignore_errors=True)
+
     return {
         "compositions_csv": str((root_out / "last_year_monthly_compositions.csv").resolve()),
         "summary_csv": str((root_out / "final_basket_list.csv").resolve()),
@@ -7832,6 +7893,16 @@ def main() -> None:
         action="store_true",
         help="Print percentage progress while rebuilding historical basket selections",
     )
+    parser.add_argument(
+        "--db-url",
+        default=None,
+        help="Postgres URL. If set, reads market data from DB and writes results to strategy_backtest_* tables.",
+    )
+    parser.add_argument(
+        "--run-key",
+        default=None,
+        help="Run key for strategy_backtest_runs (required with --db-url for writing results).",
+    )
     args = parser.parse_args()
 
     outputs = run_thematic_generation(
@@ -7849,6 +7920,8 @@ def main() -> None:
         exposure_max_workers=args.exposure_max_workers,
         exposure_model=args.exposure_model,
         log_progress=args.log_progress,
+        db_url=args.db_url,
+        run_key=args.run_key,
     )
     print("Thematic basket generation complete.")
     for k, v in outputs.items():
